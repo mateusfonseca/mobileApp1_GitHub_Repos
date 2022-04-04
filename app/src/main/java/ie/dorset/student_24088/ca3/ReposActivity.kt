@@ -39,7 +39,10 @@ class ReposActivity : AppCompatActivity(), RepoApi, NumberAbbreviator {
         val account = Account()
         fetchAccount(baseUrl + endPoint, this@ReposActivity, account)
 
-        Timer().schedule(10000) {
+        // Arbitrary timer tells UI to wait for API calls to return...
+        // Not the best solution...
+        // I know...
+        Timer().schedule(5000) {
             Handler(Looper.getMainLooper()).post {
                 binding.apply {
                     when {
