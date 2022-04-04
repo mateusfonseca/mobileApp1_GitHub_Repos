@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/error_message_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/outer_padding">
+
+    <ImageView
+        android:id="@+id/error_image"
+        android:layout_width="@dimen/avatar_size"
+        android:layout_height="@dimen/avatar_size"
+        android:layout_marginBottom="@dimen/el_dist_far"
+        app:srcCompat="@drawable/ic_general_error"
+        app:tint="@color/on_background_dark" />
+
+    <TextView
+        android:id="@+id/error_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/el_dist_far"
+        android:fontFamily="sans-serif-condensed"
+        android:textColor="@color/on_background_light"
+        android:textSize="@dimen/font_size_name"
+        tools:text="Error message description" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/error_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/go_back" />
+</LinearLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="outer_padding">20dp</dimen>
+    <dimen name="inner_padding">16dp</dimen>
+    <dimen name="outer_margin">10dp</dimen>
+    <dimen name="el_dist_close">6dp</dimen>
+    <dimen name="el_dist_far">12dp</dimen>
+    <dimen name="corner_radius_circle">100dp</dimen>
+    <dimen name="corner_radius_chip">25dp</dimen>
+    <dimen name="corner_radius_round">4dp</dimen>
+    <dimen name="stroke_width">1dp</dimen>
+    <dimen name="font_size_name">18sp</dimen>
+    <dimen name="font_size_login">16sp</dimen>
+    <dimen name="font_size_details">12sp</dimen>
+    <dimen name="font_size_description">10sp</dimen>
+    <dimen name="avatar_size">200dp</dimen>
+</resources>

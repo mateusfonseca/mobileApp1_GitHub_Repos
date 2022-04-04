@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">GitHub Repos</string>
+    <string name="followers">followers ·</string>
+    <string name="following">following</string>
+    <string name="datasource">Datasource:</string>
+    <string name="github_api">GitHub API</string>
+    <string name="username">username</string>
+    <string name="orgname">orgname</string>
+    <string name="search_repos">Search Repos</string>
+    <string name="go_back">Go Back</string>
+    <string name="account_not_found">ACCOUNT NOT FOUND!</string>
+    <string name="no_connection">INTERNET NOT CONNECTED!</string>
 </resources>
