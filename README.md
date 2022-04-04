@@ -54,9 +54,9 @@ This repository contains a "GitHub Repos" Android app developed for my CA3 at Do
 
 ## Part 3: Report
 
-Expanding on the topic of my [previous project](https://github.com/mateusfonseca/mobileApp1_Movie_Booking), this assessment proved to be considerably challenging. Handling multiple API calls to different end-points and using their responses to render UI elements while switching back and forth between threads in the background and the main thread in the foreground is a difficult task. Kotlin offers Coroutines as a lighter way of handling these background tasks, but, as it turns out, this approach is not altogether compatible with OkHttp which was designed with Java in mind.
+Expanding on the topic of my [previous project](https://github.com/mateusfonseca/mobileApp1_Movie_Booking), this assessment proved to be considerably challenging. Handling multiple API calls to different end-points and using their responses to render UI elements while switching back and forth between threads in the background and the main thread in the foreground is a difficult task. Kotlin offers [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) as a lighter way of handling these background tasks, but, as it turns out, this approach is not altogether compatible with [OkHttp](https://square.github.io/okhttp/) which was designed with Java in mind.
 
-The main obstacle I encountered while working on this application was how to have the main thread wait for the asynchronous API calls and, only after receiving them, building the views. Admittedly, I ended up using a solution that is really more of a work-around than what I really wanted. I set up a timer with *Timer().schedule()* to halt the main thread for an arbitrary amount. The problem with this solution is that even if the API calls return earlier, the main thread will keep waiting for the set time and if, by any chance, any of the calls takes longer than expected to return, the UI will not be rendered appropriately.
+The main obstacle I encountered while working on this application was how to have the main thread wait for the asynchronous API calls and, only after receiving them, building the views. Admittedly, I ended up using a solution that is really more of a work-around than what I really wanted. I set up a timer with [Timer().schedule()](https://docs.oracle.com/javase/7/docs/api/java/util/Timer.html#schedule(java.util.TimerTask,%20java.util.Date)) to halt the main thread for an arbitrary amount of time. The problem with this solution is that even if the API calls return earlier, the main thread will keep waiting for the set time and if, by any chance, any of the calls takes longer than expected to return, the UI will not be rendered appropriately.
 
 The ideal solution seems to be around the concepts of [LiveData](https://developer.android.com/topic/libraries/architecture/livedata), but unfortunately, I did not have enough time to study the subject before this assignment's submission deadline.
 
@@ -72,7 +72,7 @@ Visits to our most beloved **StackOverflow** (https://stackoverflow.com/) certai
 
 This app fetches its data from two different API's:
 
-- **GitHub Official API:** (https://api.github.com/), for all data, except for
+- **GitHub Official API:** (https://api.github.com/), for all data, except for;
 - **Heroku GitHub Language Deploy API:** (https://github-lang-deploy.herokuapp.com/), for the color hexcodes of the programming languages' circular tags used on GitHub. 
 
 ## Part 5: Copyright Disclaimer
