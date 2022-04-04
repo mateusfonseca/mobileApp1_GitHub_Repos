@@ -40,16 +40,16 @@ This repository contains a "GitHub Repos" Android app developed for my CA3 at Do
   - **2.2. lib.NumberAbbreviator**  
     This interface implements a function *abbreviate()* that takes in a whole number and abbreviates it to a specific format, for example, 1500 to 1.5k.
   - **2.3. model**  
-    - **2.3.1. Account**
+    - **2.3.1. Account**  
       This class implements the blueprint for the basic Account objects that hold data for either GitHub user accounts or organization accounts.
-    - **2.3.2. Repo**
+    - **2.3.2. Repo**  
       This class implements the blueprint for the basic Repo objects used to feed the recycler views.
   - **2.4. network.RepoApi**  
     This class implements an API that establishes communication with external datesources, fetches relevant content and assigns them to the datamodels defined in the Account and Repo classes.
-- **4. Layouts**
-  - **4.1. error_message_template**  
+- **3. Layouts**
+  - **3.1. error_message_template**  
     Template layout file for error messages displayed when there is either a connection error or the account being searched is non-existent.
-  - **4.2. repos_recycler_template**  
+  - **3.2. repos_recycler_template**  
     Template layout file for the RecyclerView that loads repositories into CardViews in a vertical list.
 
 ## Part 3: Report
