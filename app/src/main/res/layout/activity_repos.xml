@@ -46,8 +46,10 @@
                     android:id="@+id/avatar"
                     android:layout_width="@dimen/avatar_size"
                     android:layout_height="@dimen/avatar_size"
+                    android:importantForAccessibility="no"
                     android:scaleType="centerCrop"
                     tools:srcCompat="@tools:sample/avatars" />
+
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
@@ -78,10 +80,11 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="14sp"
+                    android:layout_height="14dp"
                     android:layout_marginEnd="@dimen/el_dist_close"
                     android:layout_weight="1"
+                    android:importantForAccessibility="no"
                     app:srcCompat="@drawable/ic_followers"
                     app:tint="@color/on_background_dark" />
 
@@ -125,9 +128,11 @@
                     android:text="@string/following"
                     android:textColor="@color/on_background_dark"
                     android:textSize="@dimen/font_size_details" />
+
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/company_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/el_dist_close"
@@ -135,10 +140,11 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
                     android:layout_marginEnd="@dimen/el_dist_close"
                     android:layout_weight="1"
+                    android:importantForAccessibility="no"
                     app:srcCompat="@drawable/ic_company"
                     app:tint="@color/on_background_dark" />
 
@@ -151,9 +157,11 @@
                     android:textColor="@color/on_background_light"
                     android:textSize="@dimen/font_size_details"
                     tools:text="Company Name" />
+
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/location_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/el_dist_far"
@@ -161,10 +169,11 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:layout_marginEnd="@dimen/el_dist_close"
                     android:layout_weight="1"
+                    android:importantForAccessibility="no"
                     app:srcCompat="@drawable/ic_location"
                     app:tint="@color/on_background_dark" />
 
@@ -177,6 +186,7 @@
                     android:textColor="@color/on_background_light"
                     android:textSize="@dimen/font_size_details"
                     tools:text="City, State" />
+
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -190,6 +200,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/el_dist_close"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -203,6 +214,7 @@
                     android:textSize="@dimen/font_size_details" />
 
                 <TextView
+                    android:id="@+id/github_link"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed"
@@ -211,6 +223,35 @@
                     android:textSize="@dimen/font_size_details" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/el_dist_close"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/colorsource"
+                    android:textColor="@color/on_background_light"
+                    android:textSize="@dimen/font_size_details" />
+
+                <TextView
+                    android:id="@+id/colors_link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/heroku_api"
+                    android:textColor="@color/hyperlink"
+                    android:textSize="@dimen/font_size_details" />
+
+            </LinearLayout>
+
         </LinearLayout>
+
     </ScrollView>
+
 </LinearLayout>

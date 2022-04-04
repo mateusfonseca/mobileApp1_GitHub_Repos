@@ -6,8 +6,9 @@
     <dimen name="el_dist_close">6dp</dimen>
     <dimen name="el_dist_far">12dp</dimen>
     <dimen name="corner_radius_circle">100dp</dimen>
-    <dimen name="corner_radius_chip">25dp</dimen>
-    <dimen name="corner_radius_round">4dp</dimen>
+    <dimen name="corner_radius_chip">10dp</dimen>
+    <dimen name="corner_radius_round">6dp</dimen>
+    <dimen name="corner_radius_color_tag">6dp</dimen>
     <dimen name="stroke_width">1dp</dimen>
     <dimen name="font_size_name">18sp</dimen>
     <dimen name="font_size_login">16sp</dimen>

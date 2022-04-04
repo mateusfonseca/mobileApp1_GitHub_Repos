@@ -1,5 +1,7 @@
 package ie.dorset.student_24088.ca3
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -30,71 +32,95 @@ class ReposActivity : AppCompatActivity(), RepoApi, NumberAbbreviator {
         val view = binding.root
         setContentView(view)
 
-        val url = intent.getStringExtra("Url")!!
-        Log.d(TAG, url)
+        val bundle = intent.extras
+        val baseUrl = bundle?.getString("Base")
+        val endPoint = bundle?.getString("End")
 
         val account = Account()
-        fetchAccount(url, this@ReposActivity, account)
+        fetchAccount(baseUrl + endPoint, this@ReposActivity, account)
 
         Timer().schedule(10000) {
-
             Handler(Looper.getMainLooper()).post {
-
                 binding.apply {
-                    if (account.noConnection) {
-                        errorMessage.errorMessage.text =
-                            resources.getText(R.string.no_connection)
-                        errorMessage.errorImage.setImageResource(R.drawable.ic_connection_error)
-                        errorMessage.errorMessageLayout.visibility = VISIBLE
-                        progressBar.visibility = GONE
-                        errorMessage.errorButton.setOnClickListener {
-                            finish()
+                    when {
+                        account.noConnection -> {
+                            errorMessage.errorMessage.text =
+                                resources.getText(R.string.no_connection)
+                            errorMessage.errorImage.setImageResource(R.drawable.ic_connection_error)
+                            errorMessage.errorMessageLayout.visibility = VISIBLE
+                            progressBar.visibility = GONE
+                            errorMessage.errorButton.setOnClickListener {
+                                finish()
+                            }
                         }
-                    } else if (account.notFound) {
-                        errorMessage.errorMessage.text =
-                            resources.getText(R.string.account_not_found)
-                        errorMessage.errorMessageLayout.visibility = VISIBLE
-                        progressBar.visibility = GONE
-                        errorMessage.errorButton.setOnClickListener {
-                            finish()
+                        account.notFound -> {
+                            errorMessage.errorMessage.text =
+                                resources.getText(R.string.account_not_found)
+                            errorMessage.errorMessageLayout.visibility = VISIBLE
+                            progressBar.visibility = GONE
+                            errorMessage.errorButton.setOnClickListener {
+                                finish()
+                            }
                         }
-                    } else {
-                        Picasso.get()
-                            .load(account.avatar_url)
-                            .placeholder(
-                                AppCompatResources.getDrawable(
-                                    this@ReposActivity,
-                                    R.drawable.loading_animation
-                                )!!
-                            )
-                            .error(
-                                AppCompatResources.getDrawable(
-                                    this@ReposActivity,
-                                    R.drawable.ic_connection_error
-                                )!!
-                            )
-                            .memoryPolicy(MemoryPolicy.NO_CACHE)
-                            .into(avatar)
+                        else -> {
+                            Picasso.get()
+                                .load(account.avatarUrl)
+                                .placeholder(
+                                    AppCompatResources.getDrawable(
+                                        this@ReposActivity,
+                                        R.drawable.loading_animation
+                                    )!!
+                                )
+                                .error(
+                                    AppCompatResources.getDrawable(
+                                        this@ReposActivity,
+                                        R.drawable.ic_connection_error
+                                    )!!
+                                )
+                                .memoryPolicy(MemoryPolicy.NO_CACHE)
+                                .into(avatar)
 
-                        name.text = account.name
-                        login.text = account.login
-                        followers.text = abbreviate(account.followers!!.toLong())
-                        following.text = abbreviate(account.following!!.toLong())
-                        company.text = account.company
-                        location.text = account.location
+                            if (account.name == null) {
+                                name.visibility = GONE
+                            } else {
+                                name.text = account.name
+                            }
 
-//                        fetchRepos(account.repos_url!!, this@ReposActivity, account.repos!!)
-//                        account.repos!!.forEach {
-//                            fetchParent(this@ReposActivity, it)
-//                            fetchColor(this@ReposActivity, colorUrl, it)
-//                            Log.d(TAG, it.language!!)
-//                            Log.d(TAG, it.color!!)
-//                        }
+                            login.text = account.login
+                            followers.text = abbreviate(account.followers!!.toLong())
+                            following.text = abbreviate(account.following!!.toLong())
 
-                        reposRecyclerView.adapter = RepoAdapter(account.repos!!, this@ReposActivity)
+                            if (account.company == null) {
+                                companyDetails.visibility = GONE
+                            } else {
+                                company.text = account.company
+                            }
 
-                        mainContent.visibility = VISIBLE
-                        progressBar.visibility = GONE
+                            if (account.location == null) {
+                                locationDetails.visibility = GONE
+                            } else {
+                                location.text = account.location
+                            }
+
+                            githubLink.setOnClickListener {
+                                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(baseUrl)))
+                            }
+
+                            colorsLink.setOnClickListener {
+                                startActivity(
+                                    Intent(
+                                        Intent.ACTION_VIEW,
+                                        Uri.parse("https://github-lang-deploy.herokuapp.com/")
+                                    )
+                                )
+                            }
+
+                            reposRecyclerView.adapter =
+                                RepoAdapter(account.repos!!)
+
+                            mainContent.visibility = VISIBLE
+                            progressBar.visibility = GONE
+                        }
                     }
                 }
             }

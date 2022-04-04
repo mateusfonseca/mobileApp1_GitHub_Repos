@@ -10,4 +10,6 @@
     <string name="go_back">Go Back</string>
     <string name="account_not_found">ACCOUNT NOT FOUND!</string>
     <string name="no_connection">INTERNET NOT CONNECTED!</string>
+    <string name="colorsource">Colorsource:</string>
+    <string name="heroku_api">Heroku API</string>
 </resources>

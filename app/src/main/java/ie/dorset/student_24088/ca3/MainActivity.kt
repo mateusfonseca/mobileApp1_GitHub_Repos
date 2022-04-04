@@ -1,26 +1,15 @@
 package ie.dorset.student_24088.ca3
 
-import android.content.DialogInterface
 import android.content.Intent
-import android.graphics.Movie
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Contacts
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.widget.RadioButton
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
 import ie.dorset.student_24088.ca3.databinding.ActivityMainBinding
-import ie.dorset.student_24088.ca3.model.Account
 import ie.dorset.student_24088.ca3.network.RepoApi
-import kotlinx.coroutines.*
-import kotlin.reflect.typeOf
 
 class MainActivity : AppCompatActivity(), RepoApi {
     private lateinit var binding: ActivityMainBinding
@@ -44,11 +33,11 @@ class MainActivity : AppCompatActivity(), RepoApi {
                     .show()
             } else {
                 endPoint += binding.textInput.text
+                val bundle = Bundle()
+                bundle.putString("Base", baseUrl)
+                bundle.putString("End", endPoint)
                 startActivity(
-                    Intent(this@MainActivity, ReposActivity::class.java).putExtra(
-                        "Url",
-                        baseUrl + endPoint
-                    )
+                    Intent(this@MainActivity, ReposActivity::class.java).putExtras(bundle)
                 )
             }
         }
@@ -77,11 +66,11 @@ class MainActivity : AppCompatActivity(), RepoApi {
         }
     }
 
-    // Only for debugging purposes
     override fun onRestart() {
         super.onRestart()
-        Log.d(TAG, "onRestart called!")
+        Log.d(TAG, "onRestart called!") // Only for debugging purposes
 
+        // Resets endPoint
         if (endPoint.contains("users/")) {
             onRadioButtonClicked(binding.radioButtonUsername)
         } else {

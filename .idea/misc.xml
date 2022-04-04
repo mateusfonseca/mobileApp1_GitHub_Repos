@@ -9,7 +9,7 @@
         <entry key="app/src/main/res/drawable/ic_followers.xml" value="0.1795" />
         <entry key="app/src/main/res/drawable/ic_fork.xml" value="0.1795" />
         <entry key="app/src/main/res/drawable/ic_github.xml" value="0.1795" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_repos.xml" value="0.1" />
         <entry key="app/src/main/res/layout/error_message_template.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/repos_recycler_template.xml" value="0.3875" />

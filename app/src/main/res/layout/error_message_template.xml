@@ -15,6 +15,7 @@
         android:layout_width="@dimen/avatar_size"
         android:layout_height="@dimen/avatar_size"
         android:layout_marginBottom="@dimen/el_dist_far"
+        android:importantForAccessibility="no"
         app:srcCompat="@drawable/ic_general_error"
         app:tint="@color/on_background_dark" />
 
@@ -33,4 +34,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/go_back" />
+
 </LinearLayout>
